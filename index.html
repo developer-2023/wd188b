@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let factory = {
+            name: "TVF",
+            town: "Warsaw",
+            employees: [],
+            products: [],
+            addEmployee: function(name, surname) {
+                let index = this.employees.length;
+                this.employees[index] = {
+                    name: name,
+                    surname: surname,
+                    mail: `${name.toLowerCase()}.${surname.toLowerCase()}@tvf.com`
+                }
+            },
+            showEmployees: function() {
+                console.log(this.name, this.town, "Employees");
+                let index = this.employees.length;
+                for (let i = 0; i < index; i++) {
+                    let e = this.employees[i];
+                    console.log((i+1) + " " + e.name + " " + e.surname + " " + e.mail);
+                }
+                console.log(" ");
+            },
+            createProduct: function(model) {
+                let index = this.products.length;
+                this.products[index] = {
+                    id: `SN:${index}`,
+                    brand: this.name,
+                    model: model
+                }
+            },
+            showProducts: function() {
+                console.log(this.name, this.town, "Products");
+                let index = this.products.length;
+                for (let i = 0; i < index; i++) {
+                    let p = this.products[i];
+                    console.log((i+1) + " " + p.model + " " + p.id);
+                }
+                console.log(" ");
+            }
+        }
+
+        factory.addEmployee("John", "Brown");
+        factory.addEmployee("Betty", "O'Brien");
+        factory.addEmployee("Steven", "Miller");
+        factory.addEmployee("Laura", "Sharp");
+        factory.showEmployees();
+
+        factory.createProduct("BL45-black");
+        factory.createProduct("BL45-black");
+        factory.createProduct("BL45-white");
+        factory.createProduct("BL6 5-black");
+        factory.showProducts();
+    </script>
+</body>
+</html>
