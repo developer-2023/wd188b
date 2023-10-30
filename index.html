@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>example of extended object with methods</title>
 </head>
 <body>
     
@@ -33,7 +33,7 @@
             createProduct: function(model) {
                 let index = this.products.length;
                 this.products[index] = {
-                    id: `SN:${index}`,
+                    id: `${this.name}${this.town[0]}-SN${index}`,
                     brand: this.name,
                     model: model
                 }
@@ -60,6 +60,16 @@
         factory.createProduct("BL45-white");
         factory.createProduct("BL6 5-black");
         factory.showProducts();
+
+        factory.name = "TVF Ltd";
+        console.log(factory.name);
+
+        factory["name"] = "New TVF Ltd";
+        console.log(factory.name);
+
+        const factoryLocation = "town";
+        factory[factoryLocation] = "Gdynia"; // access to property by variable name
+        console.log(factory.town);
     </script>
 </body>
 </html>
